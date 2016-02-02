@@ -19,26 +19,30 @@
 
         if(!$_POST["fname"]){
 
-            $error = "Please enter your firt name";
+            $error = "<br />Please enter your first name";
         }
 
         if(!$_POST["lname"]){
 
-            $error = "Please enter your last name";
+            $error.= "<br />Please enter your last name";
         }
 
         if(!$_POST["email"]){
 
-            $error = "Please enter your email address";
+            $error.= "<br />Please enter your email address";
         }
 
         if(!$_POST["comment"]){
 
-            $error = "Please leave comments";
+            $error.= "<br />Please leave comments";
+        }
+
+        if ($_POST["email"] != "" AND !filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+            $error.= "<br />Please enter a valid email address";
         }
 
         if($error){
-            $result = "<div class='alert alert-danger'><strong>There are errors(s) in your form: '$error'</strong></div>";
+            $result = "<div class='alert alert-danger'><strong>There are errors(s) in your form: $error</strong></div>";
         }
 
         ?>
