@@ -12,9 +12,37 @@
 
         <?php
 
+        if($_POST["submit"]){
 
+            $result = "<div class='alert alert-success'>Form Submitted Successfully</div>";
+        }
+
+        if(!$_POST["fname"]){
+
+            $error = "Please enter your firt name";
+        }
+
+        if(!$_POST["lname"]){
+
+            $error = "Please enter your last name";
+        }
+
+        if(!$_POST["email"]){
+
+            $error = "Please enter your email address";
+        }
+
+        if(!$_POST["comment"]){
+
+            $error = "Please leave comments";
+        }
+
+        if($error){
+            $result = "<div class='alert alert-danger'><strong>There are errors(s) in your form: '$error'</strong></div>";
+        }
 
         ?>
+
 
         <div class="container">
             <div class="row">
@@ -22,6 +50,11 @@
                     <div id="form-container">
                         <h1>Email Contact Form</h1>
                         <p class="lead">Please get in touch - I'll get back to you as soon as possible. Thank You!</p>
+                        <?php
+
+                        echo $result;
+
+                        ?>
                         <form method="post">
                             <div class="form-group">
                                 <input class="form-control" type="text" name="fname" placeholder="First Name"><br>
