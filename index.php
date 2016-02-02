@@ -15,46 +15,46 @@
         if($_POST["submit"]){
 
             $result = "<div class='alert alert-success'>Form Submitted Successfully</div>";
-        }
 
-        if(!$_POST["fname"]){
+            if(!$_POST["fame"]){
 
-            $error = "<br />Please enter your first name";
-        }
+                $error = "<br />Please enter your first name";
+            }
 
-        if(!$_POST["lname"]){
+            if(!$_POST["lame"]){
 
-            $error.= "<br />Please enter your last name";
-        }
+                $error.= "<br />Please enter your last name";
+            }
 
-        if(!$_POST["email"]){
+            if(!$_POST["email"]){
 
-            $error.= "<br />Please enter your email address";
-        }
+                $error.= "<br />Please enter your email address";
+            }
 
-        if(!$_POST["comment"]){
+            if(!$_POST["comment"]){
 
-            $error.= "<br />Please leave comments";
-        }
+                $error.= "<br />Please leave comments";
+            }
 
-        if ($_POST["email"] != "" AND !filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-            $error.= "<br />Please enter a valid email address";
-        }
+            if ($_POST["email"] != "" AND !filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+                $error.= "<br />Please enter a valid email address";
+            }
 
-        if($error){
-            $result = "<div class='alert alert-danger'><strong>There are errors(s) in your form: $error</strong></div>";
-        } else {
-               if( mail("marcus.warnsley@gmail.com", "Coming from Email Contact Form", "Name: ".$_POST["fname"]." ".$_POST["lname"].
-                    "<br />".
-                    "Email: ".$_POST["email"].
-                    "<br/>"."Subject: ".$_POST["subject"].
-                    "<br />".
-                    "Comments: ".$_POST["comment"]
-                )){
-                   $result = "<div class='alert alert-success'><strong>Thank You!</strong></div>";
-               } else {
-                   $result = "<div class='alert alert-error'><strong>Sorry, there was an error sending your message. Please try again later.</strong></div>";
-               }
+            if($error){
+                $result = "<div class='alert alert-danger'><strong>There are errors(s) in your form: $error</strong></div>";
+            } else {
+                   if( mail("marcus.warnsley@gmail.com", "Coming from Email Contact Form", "Name: ".$_POST["fame"]." ".$_POST["lame"].
+                        "<br />".
+                        "Email: ".$_POST["email"].
+                        "<br/>"."Subject: ".$_POST["subject"].
+                        "<br />".
+                        "Comments: ".$_POST["comment"]
+                    )){
+                       $result = "<div class='alert alert-success'><strong>Thank You!</strong></div>";
+                   } else {
+                       $result = "<div class='alert alert-error'><strong>Sorry, there was an error sending your message. Please try again later.</strong></div>";
+                   }
+            }
         }
 
         ?>
@@ -73,11 +73,11 @@
                         ?>
                         <form method="post">
                             <div class="form-group">
-                                <input class="form-control" type="text" name="fname" placeholder="First Name"><br>
-                                <input class="form-control" type="text" name="lname" placeholder="Last Name"><br>
-                                <input class="form-control" type="text" name="email" placeholder="Email Address"><br>
-                                <input class="form-control" type="text" name="subject" placeholder="Subject"><br>
-                                <textarea class="form-control" name="comment" placeholder="Comments"></textarea><br>
+                                <input class="form-control" type="text" value="<?php echo $_POST['fame']; ?>" name="fame" placeholder="First Name"><br>
+                                <input class="form-control" type="text" value="<?php echo $_POST['lame']; ?>" name="lame" placeholder="Last Name"><br>
+                                <input class="form-control" type="text" value="<?php echo $_POST['email']; ?>" name="email" placeholder="Email Address"><br>
+                                <input class="form-control" type="text" value="<?php echo $_POST['subject']; ?>" name="subject" placeholder="Subject"><br>
+                                <textarea class="form-control" name="comment" placeholder="Comments"><?php echo $_POST['comment'] ?></textarea><br>
                                 <input class="btn btn-success btn-lg" type="submit" name="submit" value="SEND">
                             </div>
                         </form>
