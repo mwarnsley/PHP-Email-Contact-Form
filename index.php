@@ -12,6 +12,8 @@
 
         <?php
 
+        error_reporting(0);
+
         if($_POST["submit"]){
 
             $result = "<div class='alert alert-success'>Form Submitted Successfully</div>";
