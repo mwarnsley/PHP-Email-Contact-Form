@@ -43,6 +43,18 @@
 
         if($error){
             $result = "<div class='alert alert-danger'><strong>There are errors(s) in your form: $error</strong></div>";
+        } else {
+               if( mail("marcus.warnsley@gmail.com", "Coming from Email Contact Form", "Name: ".$_POST["fname"]." ".$_POST["lname"].
+                    "<br />".
+                    "Email: ".$_POST["email"].
+                    "<br/>"."Subject: ".$_POST["subject"].
+                    "<br />".
+                    "Comments: ".$_POST["comment"]
+                )){
+                   $result = "<div class='alert alert-success'><strong>Thank You!</strong></div>";
+               } else {
+                   $result = "<div class='alert alert-error'><strong>Sorry, there was an error sending your message. Please try again later.</strong></div>";
+               }
         }
 
         ?>
